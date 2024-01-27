@@ -10,4 +10,10 @@ calcularPromedioNotas = function(){
     promedio = calcularPromedio(nota1,nota2,nota3)
 
     mostrarTexto("lblPromedio",promedio.toFixed(2))
+
+    if(promedio > 7){
+        mostrarImagen("imgSituacion", "imagenes/exito.gif")
+    }else{
+        mostrarImagen("imgSituacion", "imagenes/fracaso.gif")
+    }
 }
