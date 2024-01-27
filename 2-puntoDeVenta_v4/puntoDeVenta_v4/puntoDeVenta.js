@@ -102,6 +102,8 @@ calcularValorTotal = function () {
         Si funciona, hacer un commit
     */
 
+        mostrarTexto("lblResumen","Valor a pagar por "+cantidad+" "+nombreProducto+" con "+valorDescuento + " de descuento: USD "+valorTotal)
+
 }
 limpiar = function () {
     /*
