@@ -7,25 +7,12 @@ saludar = function () {
     let edad = recuperarInt("txtEdad")
 
     let estatura = recuperarFloat("txtEstatura")
+
+    let mensajeBienvenida= "Bienvenido "+nombre+" "+apellido
+
+    mostrarTexto("lblResultado",mensajeBienvenida)
+
+    mostrarImagen("imgSaludo", "imagenes/flamenco.jpg")
+    mostrarTextoEnCaja("txtApellido","hola soy nombre")
 }
 
-recuperarTexto = function (idComponente) {
-    let componente
-    let valorIngresado
-    componente = document.getElementById(idComponente)
-    valorIngresado = componente.value
-
-    return valorIngresado
-}
-
-recuperarInt = function (idComponente) {
-    let valorCaja = recuperarTexto(idComponente)
-    let valorEntero = parseInt(valorCaja)
-    return valorEntero
-}
-
-recuperarFloat = function (idComponente) {
-    let valorCaja = recuperarTexto(idComponente)
-    let valorFlotante = parseFloat(valorCaja)
-    return valorFlotante
-}
