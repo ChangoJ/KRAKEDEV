@@ -91,6 +91,10 @@ calcularValorTotal = function () {
                 Si el caso de prueba es exitoso, hacer un commit
        */
 
+                valorTotal = calcularTotal(valorSubtotal, valorDescuento, valorIVA)
+
+                mostrarTexto("lblTotal", valorTotal)   
+
     //12. Mostrar un resumen en el componente lblResumen, si no existe debe agregarlo
     /*
         Ejemplo: 
