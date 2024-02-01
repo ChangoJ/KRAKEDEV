@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="juego.css" rel="stylesheet" />
+    <script src="serviciosJuego.js"></script>
+    <script src="juego.js"></script>
+    <title>PIEDRA, PAPEL O TIJERA</title>
+</head>
+<body>
+    <h1>JUEGA PIEDRA PAPEL O TIJERA</h1>
+<div class="container">
+    <div class="caontainer_points">
+        <div>
+            <h2>Puntos Usuario: </h2>
+            <span id="lblpuntosUsuario"></span>
+        </div>
+        <div>
+            <h2>Puntos Computador: </h2>
+            <span id="lblpuntosComputador"></span>
+        </div>
+    </div>
+    <div class="container_img">
+        <article class="article_img">
+            <img  class="img_play" src="imagenes/piedra.png" width="200px"  onclick="jugar('piedra')" />
+        </article>
+        <article class="article_img">
+            <img class="img_play" src="imagenes/papel.png" width="200px"  onclick="jugar('papel')" />
+        </article>
+        <article class="article_img">
+            <img class="img_play" src="imagenes/tijera.png" width="200px" onclick="jugar('tijera')" />
+        </article>
+    </div>
+
+    <div class="container_message">
+        <h2 class="message" id="lblMessage"></h2>
+    </div>
+</div>
+
+  
+</body>
+</html>
