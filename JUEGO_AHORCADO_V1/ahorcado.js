@@ -50,6 +50,17 @@ validar = function(letra){
 
 }
 
+ingresarLetra = function(){
+    let letra
+    letra = recuperarTexto("txtLetra")
+
+    if(esMayuscula(letra)){
+        validar(letra)
+    }else{
+        alert("SOLO SE ACEPTAN MAYUSCULAS")
+    }
+}
+
 
 esMayuscula = function (caracter) {
     let codigoAscii = caracter.charCodeAt(0)
