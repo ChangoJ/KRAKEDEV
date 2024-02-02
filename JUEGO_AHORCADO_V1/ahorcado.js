@@ -25,6 +25,21 @@ guardarPalabra = function(){
 }   
 
 
+mostrarLetra = function(letra, posicion){
+
+    const posiciones = {
+        0: "div0",
+        1: "div1",
+        2: "div2",
+        3: "div3",
+        4: "div4"
+
+    }
+
+    mostrarTexto(posiciones[posicion], letra)
+}
+
+
 esMayuscula = function (caracter) {
     let codigoAscii = caracter.charCodeAt(0)
 
