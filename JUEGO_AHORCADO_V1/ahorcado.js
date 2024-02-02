@@ -1,31 +1,34 @@
 //No se olvide de respirar, mantenga la calma y demuestre lo que sabe
 
 let palabraSecreta
+let intentos = 0
+let coincidencias = 0
+let errores = 0
 
 
-guardarPalabra = function(){
+guardarPalabra = function () {
     let letra
     let verificadorMayuscula = 0
     let palabra = recuperarTexto("txtSecreta")
 
-    for(i=0; i<palabra.length; i++){
+    for (i = 0; i < palabra.length; i++) {
         letra = palabra.charAt(i)
-        
-        if(esMayuscula(letra)){
+
+        if (esMayuscula(letra)) {
             verificadorMayuscula++
         }
     }
 
-    if(palabra.length == 5 && verificadorMayuscula == 5){
+    if (palabra.length == 5 && verificadorMayuscula == 5) {
         palabraSecreta = palabra
-    }else{
+    } else {
         alert("Debe ingresar una palabras de 5 letras mayusculas")
     }
     console.log(palabra)
-}   
+}
 
 
-mostrarLetra = function(letra, posicion){
+mostrarLetra = function (letra, posicion) {
 
     const posiciones = {
         0: "div0",
@@ -38,28 +41,41 @@ mostrarLetra = function(letra, posicion){
 
     mostrarTexto(posiciones[posicion], letra)
 }
-validar = function(letra){
-    let letrasEncontradas
-    for(i=0; i<palabraSecreta.length; i++){
-        if( letra == palabraSecreta.charAt(i)){
+validar = function (letra) {
+    let letrasEncontradas = 0
+    for (i = 0; i < palabraSecreta.length; i++) {
+        if (letra == palabraSecreta.charAt(i)) {
             mostrarLetra(letra, i)
             letrasEncontradas++
+            coincidencias++
+        }else{
+            errores++
         }
 
     }
+    if (letrasEncontradas == 0) {
+        alert("LA LETRA NO ES PARTE DE LA PALABRA")
+    }
 
 }
 
-ingresarLetra = function(){
+ingresarLetra = function () {
     let letra
     letra = recuperarTexto("txtLetra")
 
-    if(esMayuscula(letra)){
+    if (esMayuscula(letra)) {
         validar(letra)
-    }else{
+        if (coincidencias == 5) {
+            alert("HA GANADO")
+        } else if (intentos == 10) {
+            alert("HA PERDIDO")
+        }
+    } else {
         alert("SOLO SE ACEPTAN MAYUSCULAS")
     }
+    intentos++
 }
+
 
 
 esMayuscula = function (caracter) {
