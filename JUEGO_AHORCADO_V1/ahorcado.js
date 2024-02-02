@@ -38,6 +38,17 @@ mostrarLetra = function(letra, posicion){
 
     mostrarTexto(posiciones[posicion], letra)
 }
+validar = function(letra){
+    let letrasEncontradas
+    for(i=0; i<palabraSecreta.length; i++){
+        if( letra == palabraSecreta.charAt(i)){
+            mostrarLetra(letra, i)
+            letrasEncontradas++
+        }
+
+    }
+
+}
 
 
 esMayuscula = function (caracter) {
