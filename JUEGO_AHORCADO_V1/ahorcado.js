@@ -48,13 +48,13 @@ validar = function (letra) {
             mostrarLetra(letra, i)
             letrasEncontradas++
             coincidencias++
-        }else{
-            errores++
         }
 
     }
     if (letrasEncontradas == 0) {
         alert("LA LETRA NO ES PARTE DE LA PALABRA")
+        errores++
+        mostrarAhorcado()
     }
 
 }
@@ -76,6 +76,14 @@ ingresarLetra = function () {
     intentos++
 }
 
+mostrarAhorcado = function () {
+    for (let i = 0; i <= errores; i++) {
+        if (errores == i) {
+            mostrarImagen("ahorcadoImagen", "Ahorcado_0"+i+".png")
+        }
+    }
+  
+}
 
 
 esMayuscula = function (caracter) {
