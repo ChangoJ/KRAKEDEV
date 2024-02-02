@@ -2,16 +2,6 @@
 
 let palabraSecreta
 
-esMayuscula = function (caracter) {
-    let codigoAscii = caracter.charCodeAt(0)
-
-    if (codigoAscii >= 65 && codigoAscii <= 90) {
-        return true
-    } else {
-        return false
-    }
-
-}
 
 guardarPalabra = function(){
     let letra
@@ -33,3 +23,15 @@ guardarPalabra = function(){
     }
     console.log(palabra)
 }   
+
+
+esMayuscula = function (caracter) {
+    let codigoAscii = caracter.charCodeAt(0)
+
+    if (codigoAscii >= 65 && codigoAscii <= 90) {
+        return true
+    } else {
+        return false
+    }
+
+}
