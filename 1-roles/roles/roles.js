@@ -21,12 +21,25 @@ mostrarOpcionEmpleado = function () {
     mostrarComponente("divEmpleado")
     ocultarComponente("divRol")
     ocultarComponente("divResumen")
+    deshabilitarCajasEmpleado()
+    mostrarEmpleado()
+}
+
+deshabilitarCajasEmpleado = function () {
     deshabilitarComponente("txtCedula")
     deshabilitarComponente("txtNombre")
     deshabilitarComponente("txtApellido")
     deshabilitarComponente("txtSueldo")
     deshabilitarComponente("btnGuardar")
-    mostrarEmpleado()
+}
+
+ejecutarNuevo = function () {
+    habilitarComponente("txtCedula")
+    habilitarComponente("txtNombre")
+    habilitarComponente("txtApellido")
+    habilitarComponente("txtSueldo")
+    habilitarComponente("btnGuardar")
+    esNuevo = true
 }
 
 mostrarOpcionRol = function () {
@@ -66,14 +79,7 @@ mostrarEmpleado = function () {
     cmpEmpleado.innerHTML = contenidoTabla
 }
 
-ejecutarNuevo = function () {
-    habilitarComponente("txtCedula")
-    habilitarComponente("txtNombre")
-    habilitarComponente("txtApellido")
-    habilitarComponente("txtSueldo")
-    habilitarComponente("btnGuardar")
-    esNuevo = true
-}
+
 
 buscarEmpleado = function (cedula) {
     let empleado = null
@@ -135,7 +141,7 @@ guardar = function () {
         }
         if (!validarCedula) {
             mostrarTexto("lblErrorCedula", "Debe ser solo digitos")
-          
+
 
         } else {
             mostrarTexto("lblErrorCedula", "")
@@ -166,13 +172,11 @@ guardar = function () {
 
 
 
-    if (cedula.length > 0 && nombre.length > 0 && apellido.length > 0 && sueldo != null ) {
-        console.log("Nete")
-        console.log(validarCedula,validarTextoNombre, validarTextoApellido,validarSueldo)
+    if (cedula.length > 0 && nombre.length > 0 && apellido.length > 0 && sueldo != null) {
+      
         if (validarCedula & validarTextoNombre & validarTextoApellido & validarSueldo) {
-            
+
             if (esNuevo) {
-                console.log("Nete")
                 nuevoEmpleado.cedula = cedula
                 nuevoEmpleado.nombre = nombre
                 nuevoEmpleado.apellido = apellido
@@ -180,14 +184,15 @@ guardar = function () {
                 estadoGuardado = agregarEmpleado(nuevoEmpleado)
                 if (!estadoGuardado) {
                     alert("EMPLEADO GUARDADO CORRECTAMENTE")
+                    deshabilitarCajasEmpleado()
                 } else {
                     alert("YA EXISTE UN EMPLEADO CON LA CEDULA: " + nuevoEmpleado.cedula)
 
                 }
             }
         }
-    }else {
-       console.log(cedula.length, nombre.length,apellido.length, isEmpty(sueldo) )
+    } else {
+        console.log(cedula.length, nombre.length, apellido.length, isEmpty(sueldo))
     }
 
 
@@ -206,7 +211,7 @@ validarTexto = function (valor, componente) {
         }
         if (!validarTexto) {
             mostrarTexto(componente, "Debe ser solo mayusculas")
-           
+
         } else {
             mostrarTexto(componente, "")
 
