@@ -19,6 +19,7 @@ mostrarOpcionEmpleado = function(){
     mostrarComponente("divEmpleado")
     ocultarComponente("divRol")
     ocultarComponente("divResumen")
+    mostrarEmpleado()
 }
 
 mostrarOpcionRol = function(){
@@ -37,3 +38,23 @@ onload = function(){
     mostrarOpcionEmpleado()
 }
 
+mostrarEmpleado = function(){
+    let empleado
+    let cmpEmpleado = document.getElementById("tablaEmpleados")
+    let contenidoTabla = "<table>"+
+    "<tr><th>CEDULA</th>"+
+    "<th>NOMBRE</th>"+
+    "<th>APELLIDO</th>"+
+    "<th>SUELDO</th></tr>"
+
+    for(i =0; i<empleados.length; i++){
+        empleado = empleados[i]
+        contenidoTabla += "<tr><td>"+empleado.cedula+"</td>"
+        contenidoTabla += "<td>"+empleado.nombre+"</td>"
+        contenidoTabla += "<td>"+empleado.apellido+"</td>"
+        contenidoTabla += "<td>"+empleado.sueldo+"</td></tr>"
+    }
+    contenidoTabla += "</table>"
+
+    cmpEmpleado.innerHTML = contenidoTabla
+}
