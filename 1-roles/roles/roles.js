@@ -184,19 +184,53 @@ guardar = function () {
                 estadoGuardado = agregarEmpleado(nuevoEmpleado)
                 if (!estadoGuardado) {
                     alert("EMPLEADO GUARDADO CORRECTAMENTE")
+                    esNuevo = false
                     deshabilitarCajasEmpleado()
                 } else {
                     alert("YA EXISTE UN EMPLEADO CON LA CEDULA: " + nuevoEmpleado.cedula)
 
                 }
+            }else {
+                let empleadoEncontrado = buscarEmpleado(cedula)
+                console.log(empleadoEncontrado)
+                empleadoEncontrado.nombre = nombre
+                empleadoEncontrado.apellido = apellido
+                empleadoEncontrado.sueldo = sueldo
+                mostrarEmpleado()
+                alert("EMPLEADO MODIFICADO EXITOSAMENTE")
+                deshabilitarCajasEmpleado()
             }
         }
-    } else {
-        console.log(cedula.length, nombre.length, apellido.length, isEmpty(sueldo))
+    } 
+
+
+
+}
+
+ejecutarBusqueda = function(){
+    let cedula
+    let empleado 
+    cedula = recuperarTexto("txtBusquedaCedula")
+    empleado = buscarEmpleado(cedula)
+
+    if(empleado !=null){
+        mostrarTextoEnCaja("txtCedula", empleado.cedula)
+        mostrarTextoEnCaja("txtNombre", empleado.nombre)
+        mostrarTextoEnCaja("txtApellido", empleado.apellido)
+        mostrarTextoEnCaja("txtSueldo", empleado.sueldo)
+        ejecutarNuevo()
+        deshabilitarComponente("txtCedula")
+        esNuevo = false
+
+    }else {
+        alert("EMPLEADO NO EXISTE")
     }
 
+    
+}
 
-
+limpiar = function(){
+    
 }
 
 validarTexto = function (valor, componente) {
