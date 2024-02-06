@@ -48,6 +48,7 @@ mostrarOpcionRol = function () {
     ocultarComponente("divEmpleado")
     ocultarComponente("divResumen")
     deshabilitarComponente("btnGuardarRol")
+    mostarRoles()
 }
 
 mostrarOpcionResumen = function () {
@@ -314,40 +315,101 @@ agregarRol = function(rol){
      }
 }
 
-calcularAporteEmpleador = function(sueldo){
-    let valorIESS
-
-    valorIESS = (sueldo*11.15)/100
-
-    return valorIESS
+calcularAporteEmpleado = function(sueldo){
+    let aporteEmpleado
+    aporteEmpleado = (sueldo*9.45)/100
+    return aporteEmpleado
 }
+
+
+calcularAporteEmpleador = function(sueldo){
+    let aporteEmpleador
+
+    aporteEmpleador = (sueldo*11.15)/100
+
+    return aporteEmpleador
+}
+
 
 guardarRol = function(){
     let cedula
     let nombre
     let sueldo
-    let aporte
+    let aporteEmpleado
+    let aporteEmpleador
     let valorAPagar
     let rol = {}
     cedula = recuperarTextoDiv("infoCedula")
     nombre = recuperarTextoDiv("infoNombre")
     sueldo = recuperarFloatDiv("infoSueldo")
-    aporte = recuperarFloatDiv("infoIESS")
+    aporteEmpleado = recuperarFloatDiv("infoIESS")
+    aporteEmpleador = calcularAporteEmpleador(sueldo)
     valorAPagar = recuperarFloatDiv("infoPago")
     rol.cedula = cedula
     rol.nombre = nombre
     rol.sueldo = sueldo
     rol.valorAPagar = valorAPagar
+    rol.aporteEmpleado = aporteEmpleado
+    rol.aporteEmpleador = aporteEmpleador
     agregarRol(rol)
     alert("GUARDADO EXITOSAMENTE")
     deshabilitarComponente("btnGuardarRol")
+    mostarRoles()
 }
 
-calcularAporteEmpleado = function(sueldo){
-    let aporte
-    aporte = (sueldo*9.45)/100
-    return aporte
+mostarRoles = function(){
+
+    let rol
+    let componenteTabla = document.getElementById("tablaResumen")
+   
+    contenidoTabla = "<table>" +
+    "<tr><th>CEDULA</th>"+
+    "<th>NOMBRE</th>"+
+    "<th>VALOR A PAGAR</th>"+
+    "<th>APORTE EMPLEADO</th>"+
+    "<th>APORTE EMPLEADOR</th></tr>"
+    for (let i = 0; i < roles.length; i++) {
+        rol = roles[i]
+
+        contenidoTabla += "<tr><td>"+rol.cedula+"</td>"
+        contenidoTabla += "<td>"+rol.nombre+"</td>"
+        contenidoTabla += "<td>"+rol.valorAPagar+"</td>"
+        contenidoTabla +="<td>"+rol.aporteEmpleado+"</td>"
+        contenidoTabla += "<td>"+rol.aporteEmpleador+"</td></th>"
+        
+    }
+
+    contenidoTabla += "</table>"
+    componenteTabla.innerHTML = contenidoTabla
+    mostrarTotales()
+
 }
+
+mostrarTotales = function(){
+    let rol
+    let totalEmpleado = 0
+    let totalEmpleador  = 0
+    let totalAPagar  = 0
+    let totalNomina  = 0
+
+    for (let i = 0; i < roles.length; i++) {
+        rol = roles[i]
+        console.log(rol)
+        totalAPagar += rol.valorAPagar
+        totalEmpleador += rol.aporteEmpleador
+        totalEmpleado += rol.aporteEmpleado
+    }
+
+    totalNomina = totalAPagar + totalEmpleado + totalEmpleador
+
+    mostrarTexto("infoTotalPago",totalAPagar)
+    mostrarTexto("infoAporteEmpresa",totalEmpleador)
+    mostrarTexto("infoAporteEmpleado",totalEmpleado)
+    mostrarTexto("infoTotalNomina",totalNomina)
+
+}
+
+
 
 calcularValorAPagar = function(sueldo, aporte, descuento){
     let valorAPagar
