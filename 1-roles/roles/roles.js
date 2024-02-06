@@ -84,14 +84,16 @@ mostrarEmpleado = function () {
 buscarEmpleado = function (cedula) {
     let empleado = null
     for (let i = 0; i < empleados.length; i++) {
-        empleado = empleados[i]
+        let empleadoSearch = empleados[i]
 
-        if (cedula == empleado.cedula) {
+        if (cedula == empleadoSearch.cedula) {
+            empleado = empleadoSearch
             return empleado
         }
 
 
     }
+    console.log(empleado)
 
     return empleado
 
@@ -230,7 +232,12 @@ ejecutarBusqueda = function(){
 }
 
 limpiar = function(){
-    
+    esNuevo = false
+    mostrarTextoEnCaja("txtCedula", "")
+    mostrarTextoEnCaja("txtNombre", "")
+    mostrarTextoEnCaja("txtApellido", "")
+    mostrarTextoEnCaja("txtSueldo", "")
+    deshabilitarCajasEmpleado()
 }
 
 validarTexto = function (valor, componente) {
