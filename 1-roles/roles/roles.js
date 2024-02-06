@@ -280,6 +280,34 @@ buscarPorRol = function () {
 
 }
 
+calcularAporteEmpleado = function(sueldo){
+    let aporte
+    aporte = (sueldo*9.45)/100
+    return aporte
+}
+
+calcularValorAPagar = function(sueldo, aporte, descuento){
+    let valorAPagar
+    valorAPagar = (sueldo - aporte) - descuento
+    return valorAPagar
+}
+
+calcularRol = function(){
+    let sueldo
+    let descuentos
+    let aporte
+    let valorAPagar
+    sueldo = recuperarFloatDiv("infoSueldo")
+    descuentos = recuperarFloat("txtDescuentos")
+
+    if(esFloat(descuentos) && (descuentos >=0 && descuentos <= sueldo) ){
+        aporte = calcularAporteEmpleado(sueldo)
+        mostrarTexto("infoIESS", aporte)
+        valorAPagar = calcularValorAPagar(sueldo, aporte, descuentos)
+        mostrarTexto("infoPago", valorAPagar)
+
+    }
+}
 esFloat = function (valor) {
     let numeroFloat = parseFloat(valor);
 
