@@ -1,5 +1,6 @@
 
 let esNuevo = false
+let roles = []
 let empleados = [
     {
         cedula: "1714616123",
@@ -46,6 +47,7 @@ mostrarOpcionRol = function () {
     mostrarComponente("divRol")
     ocultarComponente("divEmpleado")
     ocultarComponente("divResumen")
+    deshabilitarComponente("btnGuardarRol")
 }
 
 mostrarOpcionResumen = function () {
@@ -280,6 +282,67 @@ buscarPorRol = function () {
 
 }
 
+buscarRol = function(cedula){
+    let rol = null
+    for (let i = 0; i < roles.length; i++) {
+       let rolSearch = roles[i]
+
+       if(cedula == rolSearch.cedula){
+        rol = rolSearch
+       }
+        
+    }
+
+    return rol
+}
+
+agregarRol = function(rol){
+    let verificarRol = false
+    for (let i = 0; i < roles.length; i++) {
+        let rolSearch = roles[i]
+ 
+        if(rol.cedula == rolSearch.cedula){
+            verificarRol = true
+        }
+         
+     }
+
+     if(!verificarRol){
+        roles.push(rol)
+     }else{
+        alert("ROL YA EXISTE")
+     }
+}
+
+calcularAporteEmpleador = function(sueldo){
+    let valorIESS
+
+    valorIESS = (sueldo*11.15)/100
+
+    return valorIESS
+}
+
+guardarRol = function(){
+    let cedula
+    let nombre
+    let sueldo
+    let aporte
+    let valorAPagar
+    let rol = {}
+    cedula = recuperarTextoDiv("infoCedula")
+    nombre = recuperarTextoDiv("infoNombre")
+    sueldo = recuperarFloatDiv("infoSueldo")
+    aporte = recuperarFloatDiv("infoIESS")
+    valorAPagar = recuperarFloatDiv("infoPago")
+    rol.cedula = cedula
+    rol.nombre = nombre
+    rol.sueldo = sueldo
+    rol.valorAPagar = valorAPagar
+    agregarRol(rol)
+    alert("GUARDADO EXITOSAMENTE")
+    deshabilitarComponente("btnGuardarRol")
+}
+
 calcularAporteEmpleado = function(sueldo){
     let aporte
     aporte = (sueldo*9.45)/100
@@ -307,6 +370,8 @@ calcularRol = function(){
         mostrarTexto("infoPago", valorAPagar)
 
     }
+    
+    habilitarComponente("btnGuardarRol")
 }
 esFloat = function (valor) {
     let numeroFloat = parseFloat(valor);
