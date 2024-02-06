@@ -55,7 +55,7 @@ mostrarOpcionResumen = function () {
 }
 
 onload = function () {
-    mostrarOpcionEmpleado()
+    mostrarOpcionRol()
 }
 
 mostrarEmpleado = function () {
@@ -175,7 +175,7 @@ guardar = function () {
 
 
     if (cedula.length > 0 && nombre.length > 0 && apellido.length > 0 && sueldo != null) {
-      
+
         if (validarCedula & validarTextoNombre & validarTextoApellido & validarSueldo) {
 
             if (esNuevo) {
@@ -192,7 +192,7 @@ guardar = function () {
                     alert("YA EXISTE UN EMPLEADO CON LA CEDULA: " + nuevoEmpleado.cedula)
 
                 }
-            }else {
+            } else {
                 let empleadoEncontrado = buscarEmpleado(cedula)
                 console.log(empleadoEncontrado)
                 empleadoEncontrado.nombre = nombre
@@ -203,19 +203,19 @@ guardar = function () {
                 deshabilitarCajasEmpleado()
             }
         }
-    } 
+    }
 
 
 
 }
 
-ejecutarBusqueda = function(){
+ejecutarBusqueda = function () {
     let cedula
-    let empleado 
+    let empleado
     cedula = recuperarTexto("txtBusquedaCedula")
     empleado = buscarEmpleado(cedula)
 
-    if(empleado !=null){
+    if (empleado != null) {
         mostrarTextoEnCaja("txtCedula", empleado.cedula)
         mostrarTextoEnCaja("txtNombre", empleado.nombre)
         mostrarTextoEnCaja("txtApellido", empleado.apellido)
@@ -224,14 +224,14 @@ ejecutarBusqueda = function(){
         deshabilitarComponente("txtCedula")
         esNuevo = false
 
-    }else {
+    } else {
         alert("EMPLEADO NO EXISTE")
     }
 
-    
+
 }
 
-limpiar = function(){
+limpiar = function () {
     esNuevo = false
     mostrarTextoEnCaja("txtCedula", "")
     mostrarTextoEnCaja("txtNombre", "")
@@ -264,6 +264,20 @@ validarTexto = function (valor, componente) {
     }
 
     return validarTexto
+}
+
+buscarPorRol = function () {
+    let cedulaRol
+    let empleado
+    cedulaRol = recuperarTexto("txtBusquedaCedulaRol")
+    empleado = buscarEmpleado(cedulaRol)
+
+    if (empleado != null) {
+        mostrarTexto("infoCedula", empleado.cedula)
+        mostrarTexto("infoNombre", empleado.nombre)
+        mostrarTexto("infoSueldo", empleado.sueldo)
+    }
+
 }
 
 esFloat = function (valor) {
