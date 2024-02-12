@@ -277,9 +277,12 @@ buscarPorRol = function () {
 
     if (empleado != null) {
         mostrarTexto("infoCedula", empleado.cedula)
-        mostrarTexto("infoNombre", empleado.nombre)
+        mostrarTexto("infoNombre", empleado.nombre+" "+empleado.apellido)
         mostrarTexto("infoSueldo", empleado.sueldo)
+    }else{
+        alert("No existe el empleado")
     }
+    
 
 }
 
