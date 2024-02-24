@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="cuentas.js"></script>
+    <script src="utilitarios.js"></script>
+    <title>CUENTAS</title>
+</head>
+<body>
+    <div>
+        <h1>Registro cuentas</h1>
+    </div>
+    <div>
+        <div>
+            <label>Cedula</label>
+            <input type="text" id="txtCedula"/>
+        </div>
+        <div>
+            <label>Nombre</label>
+            <input type="text" id="txtNombre"/>
+        </div>
+        <div>
+            <label>Apellido</label>
+            <input type="text" id="txtApellido"/>
+        </div>
+        <div>
+            <label>Numero de cuenta</label>
+            <input type="text" id="txtCuenta"/>
+        </div>
+        <div>
+            <input type="button" value="Agregar" onclick="agregarCuenta()" />
+        </div>
+    </div>
+    <hr>
+    <div id="tablaCuentas">
+
+    </div>
+</body>
+</html>
