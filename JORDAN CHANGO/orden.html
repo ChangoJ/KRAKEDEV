@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="utilitarios.js"></script>
+    <script src="orden.js"></script>
+    <link href="orden.css" rel="stylesheet">
+    <title>ORDEN</title>
+</head>
+
+<body>
+    <div class="orden_title">
+        <h1>Personas</h1>
+    </div>
+
+    <div id="divEmpleado">
+        <div class="principal">
+            <div class="area">
+                <div class="ingresoDatos">
+                    <div class="tituloCampo">
+                        CEDULA
+                    </div>
+                    <div>
+                        <input type="text" class="cajaTexto" id="txtBusquedaCedula" />
+                        <div class="error" id="lblErrorBusqueda"></div>
+                    </div>
+                </div>
+                <div class="contenedorBoton">
+                    <input type="button" value="BUSCAR" class="estiloBoton" onclick="ejecutarBusqueda()" />
+                </div>
+            </div>
+
+            <div class="area">
+                <div class="ingresoDatos">
+                    <div class="tituloCampo">
+                        NOMBRE
+                    </div>
+                    <div>
+                        <input type="text" class="cajaTexto" id="txtNombre" />
+                        <div class="error" id="lblErrorNombre"></div>
+                    </div>
+                </div>
+                <div class="ingresoDatos">
+                    <div class="tituloCampo">
+                        EDAD
+                    </div>
+                    <div>
+                        <input type="text" class="cajaTexto" id="txtEdad" />
+                        <div class="error" id="lblErrorEdad"></div>
+                    </div>
+                </div>
+                <div class="botones">
+                    <div class="contenedorBoton">
+                        <input type="button" value="ENCONTRAR MAYOR" class="estiloBoton" onclick="determinarMayor()" />
+                    </div>
+                    <div class="contenedorBoton">
+                        <input type="button" value="GUARDAR" class="estiloBoton" id="btnGuardar" onclick="agregarPersona()" />
+                    </div>
+                    <div class="contenedorBoton">
+                        <input type="button" value="ENCONTRAR MENOR" class="estiloBoton" onclick="determinarMenor()" />
+                    </div>
+                    <!-- <div class="contenedorBoton">
+                        <input type="button" value="LIMPIAR" class="estiloBoton" onclick="limpiar()" />
+                    </div> -->
+                </div>
+                <div id="tablaEmpleados" class="areaTabla">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
